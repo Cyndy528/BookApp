@@ -10,7 +10,7 @@
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
   <!-- custom styles -->
-  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
 
   <title>Book App</title>
 </head>
@@ -18,13 +18,43 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">Book App</h1>
+        <h1 class="text-center">Whatcha Gonna Read?</h1>
         <br>
-        <div id="books-list"></div>
+        <form role="form" id="bookForm">
+          <div class="form-group">
+            <input type="text" class="form-control" name="title" placeholder="Book Title">
+            <br>
+            <input type="text" class="form-control" name="author" placeholder="Author">
+            <br>
+            <input type="text" class="form-control" name="image" placeholder="Book Cover Image URL">
+            <br>
+            <input type="text" class="form-control" name="releaseDate" placeholder="Release Date">
+            <br>
+            <input type="submit" class="btn btn-warning btn block" id="save" value="Save">
+          </div>
+        </form>
+        <hr>
+        <div id="book-list">
+          <script id="book-template" type="text/x-handlebars-template">
+            {{#each book}}
+            <div class="row">
+              <div class="col-md-4">
+                <img src="{{image}}" class="img-responsive">
+              </div>
+              <div class="description">
+                <h4>{{title}}</h4>
+                <p><st>Author:</st>{{author}}</p>
+                <p><st>Released:</st>{{releaseDate}}</p>
+              </div>
+            </div>
+            <hr>
+            {{/each}} 
+          </script>
+        </div>
       </div>
     </div>
   </div>
-  
+
   <!-- jquery -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
