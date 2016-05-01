@@ -45,6 +45,23 @@
                 <h4>{{title}}</h4>
                 <p><st>Author:</st>{{author}}</p>
                 <p><st>Released:</st>{{releaseDate}}</p>
+                <div class="edit-holder">
+                  <button type="button" class="btn btn-default" aria-label="Left Align" id="edit">
+                    <span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span>Edit
+                  </button>
+                  <button type="button" class="btn btn-default" aria-label="Left Align" id="delete">
+                    <span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span>Remove
+                  </button>
+                  <form-role="form" id="editForm">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="title" placeholder="Book Title">
+                      <input type="text" class="form-control" name="author" placeholder="Author">
+                      <input type="text" class="form-control" name="image" placeholder="Book Cover Image URL">
+                      <input type="text" class="form-control" name="releaseDate" placeholder="Released Date">
+                      <input type="submit" class="btn btn-warning btn-block" id="save" value="Edit">
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
             <hr>
