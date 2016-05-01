@@ -46,13 +46,13 @@
                 <p><st>Author:</st>{{author}}</p>
                 <p><st>Released:</st>{{releaseDate}}</p>
                 <div class="edit-holder">
-                  <button type="button" class="btn btn-default" aria-label="Left Align" id="edit">
+                  <button type="button" class="btn btn-default edit-button" aria-label="Left Align" id="{{_id}}">
                     <span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span>Edit
                   </button>
                   <button type="button" class="btn btn-default" aria-label="Left Align" id="delete">
                     <span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span>Remove
                   </button>
-                  <form-role="form" id="editForm">
+                  <form-role="form" class="edit-form" id="form{{_id}}">
                     <div class="form-group">
                       <input type="text" class="form-control" name="title" placeholder="Book Title">
                       <input type="text" class="form-control" name="author" placeholder="Author">

@@ -1,33 +1,46 @@
 $(function(){
 	
-	var booksUrl = "https://super-crud.herokuapp.com/books";
+	// base API Route
+	var baseUrl= "https://super-crud.herokuapp.com/books";
+	
+	// array to hold book data from API
 	var bookStore = [];
-	var $bookList = $('#book-list');
+
+	// element to display list of books
+	var $booksList = $('#book-list');
+
+	// form to create new book
+	var $createBook = $('#create-book');
 
 	//compile handlebars template
 	var source = $('#book-template').html();
 	var template = Handlebars.compile(source);
 
-	function addBookToPage() {
-		document.getElementById('bookForm').reset();
-		//clear form
-		var bookHtml = template({book: bookStore});
-		$bookList.append(bookHtml);
-		}
-		$.get(booksUrl, function(data){
-			bookStore = data.book;
-			addBookToPage();
-		});
-		$('form').on('submit', function(event){
-			event.preventDefault();
-			var addedBook = $(this).serialize();
-			$.post(booksUrl, addedBook, function(newbook){
-				bookStore.push(newbook);
-				//add new book to bookStore & updates page
-				addBookToPage();
-			});
-		});
+
+	// helper function to render all books to view
+	var render = function (){
+		// empty existing books from view
+		$booksList.empty();
+
+		// pass 'allBooks' into the template function
+		var booksHTML = template({ books: allBooks});
+
+		// append html to the view
+		$booksList.append(booksHTML);
+	};
+
+	// GET all books on the page load
+	$.get(baseUrl, function(data){
+		console.log(data);
+
+	// set 'allBooks' to the book data from API
+	allBooks = data.books;
+
+	// render all the books to view
+	render();
 	});
 
 
-	
+
+
+});
