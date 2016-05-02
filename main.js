@@ -7,7 +7,7 @@ $(function(){
 	var bookStore = [];
 
 	// element to display list of books
-	var $booksList = $('#book-list');
+	var $booksList = $('#books-list');
 
 	// form to create new book
 	var $createBook = $('#create-book');
@@ -20,13 +20,13 @@ $(function(){
 	// helper function to render all books to view
 	var render = function (){
 		// empty existing books from view
-		$booksList.empty();
+		$("#books-list").empty();
 
 		// pass 'allBooks' into the template function
-		var booksHTML = template({ books: allBooks});
+		var booksHtml = template({ books: allBooks});
 
 		// append html to the view
-		$booksList.append(booksHTML);
+		$booksList.append(booksHtml);
 	};
 
 	// GET all books on the page load
@@ -59,8 +59,8 @@ $(function(){
 	});
 
 	// add event-handlers to books for updating/deleting
-	$booksList
-		//for update: submit eveon on '.update-book' form
+	$('#books-list')
+		//for update: submit even on '.update-book' form
 		.on('submit', '.update-book', function(event){
 			event.preventDefault();
 
@@ -91,7 +91,7 @@ $(function(){
 	});
 
 	// for delete: click event on '.delete-book' button
-	$('form').on('submit', function(event){
+	$('#books-list').on('submit', function(event){
 		event.preventDefault();
 
 		// find the book's id (stored in HTML as 'data-id')
