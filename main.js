@@ -107,10 +107,10 @@ $(function(){
 			type: 'DELETE', 
 			url: baseUrl + '/' + bookId, 
 			success: function(data){
-				// remove delted book, from all books
+				// remove deleted book, from all books
 				allBooks.splice(allBooks.indexOf(bookToDelete), 1);
 
-				// render all the boosk to view
+				// render all the books to view
 				render();
 			}
 		});
