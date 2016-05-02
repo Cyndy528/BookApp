@@ -20,45 +20,60 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">Whatcha Gonna Read?</h1>
         <br>
-        <form role="form" id="bookForm">
+        <form id="create-book">
           <div class="form-group">
             <input type="text" class="form-control" name="title" placeholder="Book Title">
-            <br>
+          </div>
+          <div class="form-group">
             <input type="text" class="form-control" name="author" placeholder="Author">
-            <br>
+          </div>
+          <div class="form-group">
             <input type="text" class="form-control" name="image" placeholder="Book Cover Image URL">
-            <br>
+          </div>
             <input type="text" class="form-control" name="releaseDate" placeholder="Release Date">
-            <br>
-            <input type="submit" class="btn btn-warning btn block" id="save" value="Save">
+          <div class="form-group">
+            <input type="submit" class="btn btn-block btn-primary" value="Save">
           </div>
         </form>
-        <hr>
+        <br>
         <div id="book-list">
+
+          <!-- handlebars template -->
           <script id="book-template" type="text/x-handlebars-template">
             {{#each book}}
+            <div class="book" data-id="{{_id}}">
             <div class="row">
-              <div class="col-md-4">
+
+              <!-- book image -->
+              <div class="col-xs-4">
                 <img src="{{image}}" class="img-responsive">
               </div>
-              <div class="description">
-                <h4>{{title}}</h4>
-                <p><st>Author:</st>{{author}}</p>
-                <p><st>Released:</st>{{releaseDate}}</p>
-                <div class="edit-holder">
-                  <button type="button" class="btn btn-default edit-button" aria-label="Left Align" id="{{_id}}">
-                    <span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span>Edit
-                  </button>
-                  <button type="button" class="btn btn-default" aria-label="Left Align" id="delete">
-                    <span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span>Remove
-                  </button>
-                  <form-role="form" class="edit-form" id="form{{_id}}">
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="title" placeholder="Book Title">
-                      <input type="text" class="form-control" name="author" placeholder="Author">
-                      <input type="text" class="form-control" name="image" placeholder="Book Cover Image URL">
-                      <input type="text" class="form-control" name="releaseDate" placeholder="Released Date">
-                      <input type="submit" class="btn btn-warning btn-block" id="save" value="Edit">
+
+              <!-- book details -->
+              <div class="col-xs-8">
+                <h4><strong>Title:</strong>{{title}}</h4>
+                <p><strong>Author:</strong>{{author}}</p>
+                <p><strong>Released:</strong>{{releaseDate}}</p>
+                
+                  <!-- edit button to toggle form -->
+                  <a href="javascript:void(0)" class="btn btn-default btn-sm edit-book" data-toggle="collapse" data-target="#update-{{_id}}">
+                      <span class="glyphicon glyphicon-pencil"></span> Edit
+                  </a>
+
+                  <!-- delete button -->
+                  <a href="javascript:void(0)" class="btn btn-default btn-sm delete-book">
+                      <span class="glyphicon glyphicon-trash"></span> Delete
+                  </a>
+
+                  <!-- form to update book -->
+                  <div class="collapse" id="update-{{_id}}">
+                    <br>
+                    <div class="update-book">
+                      <input type="text" class="form-control" name="title" placeholder="Title" value="{{title}}">
+                      <input type="text" class="form-control" name="author" placeholder="Author" value="author">
+                      <input type="text" class="form-control" name="image" placeholder="Book Cover Image URL" value="{{image}}">
+                      <input type="text" class="form-control" name="releaseDate" placeholder="Released Date" value="{{releaseDate}}">
+                      <input type="submit" class="btn btn-block btn-default" value="Update">
                     </div>
                   </form>
                 </div>
